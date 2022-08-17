@@ -134,6 +134,7 @@ class Exam:
 
         input("Pressione ENTER para continuar...")
         print("Aguarde...")
+        
     
 os.system("clear")
 
@@ -144,8 +145,9 @@ time.sleep(3)
 
 os.system("clear")
 
+questions = [1, 2, 3, 4, 5, 6, 7, 8]
+
 # Toda vez que eu precisar saber, por exemplo, quantas perguntas o usuário acertou, eu uso len(corrects)
-questions = []
 
 corrects = []
 
@@ -154,13 +156,13 @@ asks = []
 wrongs = []
 
 # Aqui ele cria uma ordem de números
-r = 1
-while 1:
-    questions.append(r)
-    r += 1
-
-    if r == 8:
-        break
+#r = 1
+#while 1:
+#    questions.append(r)
+#    r += 1
+#
+#    if r == 8:
+#        break
 
 # Essa ordem será misturada
 random.shuffle(questions)
@@ -205,7 +207,7 @@ fileName = "Leaderboard.txt"
 # Loop para verificar input do usuário, se ele digitar algo errado, simplesmente volta o loop.
 while True:
     try:
-        Leader = int(input("Pressione 0 para sair, e 1 para ver a sua colocação: "))
+        Leader = int(input("Pressione 0 para sair, e 1 para ver o mural de participantes: "))
         if Leader == 0:
             break
 
@@ -214,7 +216,7 @@ while True:
                 archive.CreateFile(fileName)
 
             if len(corrects) > 0:
-                archive.WriteFile(fileName, f"\n{champion}------------{len(corrects)}")
+                archive.WriteFile(fileName, f"\n{champion} ------------ {len(corrects)}")
                 first = archive.ReadFile(fileName)
     except:
         continue
